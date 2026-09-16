@@ -6,38 +6,49 @@ import os
 st.set_page_config(
     page_title="A Special Surprise ❤️",
     page_icon="❤️",
-    layout="wide",
-    initial_sidebar_state="collapsed"
+    layout="centered"
 )
 
-
-def get_base64(path):
-    with open(path, "rb") as file:
-        return base64.b64encode(file.read()).decode("utf-8")
-
-
+# -----------------------------
 # FILE PATHS
+# -----------------------------
+
+song_path = "assets/jo tum mereho.mpeg"
 photo1_path = "assets/charitha1.jpg"
 photo2_path = "assets/charitha2.jpg"
-song_path = "assets/jo tum mereho.mpeg"
 
 
+# -----------------------------
 # CHECK FILES
-for file_path in [photo1_path, photo2_path, song_path]:
+# -----------------------------
+
+for file_path in [song_path, photo1_path, photo2_path]:
     if not os.path.exists(file_path):
         st.error(f"File not found: {file_path}")
         st.stop()
 
 
+# -----------------------------
 # CONVERT FILES TO BASE64
-photo1 = get_base64(photo1_path)
-photo2 = get_base64(photo2_path)
-song = get_base64(song_path)
+# -----------------------------
+
+with open(song_path, "rb") as f:
+    song_base64 = base64.b64encode(f.read()).decode()
+
+with open(photo1_path, "rb") as f:
+    photo1_base64 = base64.b64encode(f.read()).decode()
+
+with open(photo2_path, "rb") as f:
+    photo2_base64 = base64.b64encode(f.read()).decode()
 
 
+# -----------------------------
 # HTML + CSS + JAVASCRIPT
+# -----------------------------
+
 html_code = f"""
 <!DOCTYPE html>
+
 <html>
 
 <head>
@@ -53,209 +64,189 @@ html_code = f"""
 body {{
     margin: 0;
     padding: 0;
-
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 
     background:
-        radial-gradient(circle at top left, #ff5fa2, transparent 35%),
-        radial-gradient(circle at bottom right, #7b2cff, transparent 35%),
-        linear-gradient(135deg, #14001f, #25002e, #080014);
+        radial-gradient(circle at top, #35104f 0%, #16091f 45%, #08050c 100%);
 
     color: white;
-
     min-height: 100vh;
-    overflow-x: hidden;
 }}
 
-
-/* MAIN PAGE */
-
-.page {{
-    min-height: 750px;
+.container {{
+    min-height: 100vh;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
     padding: 30px 15px;
-
-    position: relative;
 }}
 
-
-/* GLASS CARD */
-
 .card {{
-    width: min(900px, 95%);
+    width: 100%;
+    max-width: 850px;
 
-    padding: 45px 30px;
+    padding: 55px 30px;
 
     text-align: center;
 
     border-radius: 35px;
 
-    background: rgba(255,255,255,0.10);
+    background: rgba(255,255,255,0.08);
 
-    border: 1px solid rgba(255,255,255,0.25);
-
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255,255,255,0.20);
 
     box-shadow:
         0 25px 70px rgba(0,0,0,0.55),
-        0 0 45px rgba(255,70,180,0.25);
+        0 0 50px rgba(255,60,190,0.18);
 
-    position: relative;
-    z-index: 2;
+    backdrop-filter: blur(15px);
+
+    animation: cardAppear 1.2s ease;
 }}
 
-
-/* SMALL TITLE */
-
-.small {{
-    font-size: 14px;
-
-    letter-spacing: 5px;
-
-    color: #ffd2eb;
-
-    margin-bottom: 15px;
-}}
-
-
-/* OPENING TITLE */
-
-h1 {{
-    font-size: clamp(38px, 7vw, 65px);
-
-    margin: 10px 0 20px;
-
-    background: linear-gradient(
-        90deg,
-        #ffffff,
-        #ffb6dc,
-        #ffffff
-    );
-
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-    animation: titleGlow 2.5s infinite alternate;
-}}
-
-@keyframes titleGlow {{
-
-    from {{
-        filter: drop-shadow(
-            0 0 5px rgba(255,120,200,0.3)
-        );
-    }}
-
-    to {{
-        filter: drop-shadow(
-            0 0 25px rgba(255,120,200,0.9)
-        );
-    }}
-
-}}
-
-
-/* NAME */
-
-.name {{
-    font-size: clamp(42px, 8vw, 75px);
-
-    font-weight: bold;
-
-    margin: 15px 0 30px;
-
-    background: linear-gradient(
-        90deg,
-        #ffffff,
-        #ff9fd3,
-        #ffffff
-    );
-
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-    filter: drop-shadow(
-        0 0 18px rgba(255,80,190,0.7)
-    );
-
-    animation: nameAppear 1.2s ease;
-}}
-
-@keyframes nameAppear {{
-
+@keyframes cardAppear {{
     from {{
         opacity: 0;
-        transform: scale(0.7);
+        transform: translateY(30px);
     }}
 
     to {{
         opacity: 1;
-        transform: scale(1);
+        transform: translateY(0);
     }}
-
 }}
 
 
-/* MESSAGE */
+/* -----------------------------
+   OPENING SCREEN
+----------------------------- */
 
-.message {{
+.opening h1 {{
+    font-size: clamp(32px, 7vw, 55px);
+
+    margin-bottom: 15px;
+
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #ff9de2,
+        #ffffff
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}}
+
+.opening p {{
     font-size: 18px;
 
     line-height: 1.7;
 
-    color: #f9eaf4;
+    opacity: 0.85;
 
-    margin: 20px auto;
-
-    max-width: 650px;
+    margin-bottom: 35px;
 }}
 
 
-/* OPEN BUTTON */
+/* -----------------------------
+   BUTTON
+----------------------------- */
 
-.open-btn {{
-    margin-top: 25px;
-
-    padding: 16px 30px;
-
+.open-button {{
     border: none;
+
+    padding: 16px 32px;
 
     border-radius: 50px;
 
-    background: linear-gradient(
-        135deg,
-        #ff4fa3,
-        #a93cff
-    );
-
-    color: white;
-
-    font-size: 17px;
+    font-size: 18px;
 
     font-weight: bold;
 
     cursor: pointer;
 
-    box-shadow:
-        0 10px 30px rgba(255,50,170,0.4);
+    color: white;
 
-    transition: 0.3s;
+    background: linear-gradient(
+        135deg,
+        #ff3cac,
+        #784ba0
+    );
+
+    box-shadow:
+        0 10px 30px rgba(255,60,190,0.35);
+
+    transition: all 0.3s ease;
 }}
 
-.open-btn:hover {{
-    transform: translateY(-4px) scale(1.04);
+.open-button:hover {{
+    transform: translateY(-4px) scale(1.03);
 
     box-shadow:
-        0 15px 40px rgba(255,50,170,0.7);
+        0 15px 40px rgba(255,60,190,0.55);
 }}
 
 
-/* PREMIUM PHOTO SLIDESHOW */
+/* -----------------------------
+   SURPRISE
+----------------------------- */
+
+.hidden {{
+    display: none;
+}}
+
+.surprise-title {{
+    margin-bottom: 10px;
+
+    font-size: 18px;
+
+    letter-spacing: 4px;
+
+    opacity: 0.65;
+}}
+
+.name {{
+    font-size: clamp(45px, 10vw, 80px);
+
+    margin: 10px 0 15px;
+
+    background: linear-gradient(
+        90deg,
+        #ff7bd5,
+        #ffffff,
+        #ff7bd5
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: nameGlow 2s ease-in-out infinite alternate;
+}}
+
+@keyframes nameGlow {{
+    from {{
+        filter: drop-shadow(0 0 5px rgba(255,80,200,0.3));
+    }}
+
+    to {{
+        filter: drop-shadow(0 0 25px rgba(255,80,200,0.8));
+    }}
+}}
+
+.subtitle {{
+    font-size: 18px;
+
+    opacity: 0.8;
+
+    margin-bottom: 25px;
+}}
+
+
+/* -----------------------------
+   PHOTOS
+----------------------------- */
 
 .photos {{
     position: relative;
@@ -264,11 +255,10 @@ h1 {{
 
     height: 360px;
 
-    margin: 35px auto;
+    margin: 40px auto;
 
     display: block;
 }}
-
 
 .photo {{
     position: absolute;
@@ -296,33 +286,15 @@ h1 {{
     opacity: 0;
 
     animation: photoSlide 8s infinite;
-
-    transition: transform 0.4s ease;
 }}
-
-
-/* PHOTO 1 */
 
 .photo:nth-child(1) {{
     animation-delay: 0s;
 }}
 
-
-/* PHOTO 2 */
-
 .photo:nth-child(2) {{
     animation-delay: 4s;
 }}
-
-
-/* PHOTO HOVER */
-
-.photo:hover {{
-    transform: scale(1.04);
-}}
-
-
-/* PHOTO SLIDESHOW ANIMATION */
 
 @keyframes photoSlide {{
 
@@ -349,167 +321,118 @@ h1 {{
     100% {{
         opacity: 0;
     }}
-
 }}
 
 
-/* HIDDEN */
+/* -----------------------------
+   BIRTHDAY WISH
+----------------------------- */
 
-.hidden {{
-    display: none;
+.birthday-wish {{
+    margin: 50px auto 30px;
+
+    padding: 32px 24px;
+
+    max-width: 700px;
+
+    border-radius: 28px;
+
+    background: rgba(255,255,255,0.10);
+
+    border: 1px solid rgba(255,255,255,0.25);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.35),
+        0 0 30px rgba(255,70,190,0.18);
+
+    animation: wishAppear 2s ease;
 }}
 
+.birthday-wish h2 {{
+    font-size: clamp(28px, 6vw, 42px);
 
-/* SURPRISE REVEAL */
-
-.reveal {{
-    animation: revealScreen 1.2s ease;
+    margin-bottom: 20px;
 }}
 
-@keyframes revealScreen {{
+.birthday-wish p {{
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    opacity: 0.9;
+}}
+
+@keyframes wishAppear {{
 
     from {{
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(35px);
     }}
 
     to {{
         opacity: 1;
         transform: translateY(0);
     }}
+}}
 
+.from {{
+    margin-top: 25px;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    opacity: 0.9;
 }}
 
 
-/* FLOATING HEARTS */
+/* -----------------------------
+   MUSIC BUTTON
+----------------------------- */
 
-.hearts {{
-    position: fixed;
-
-    inset: 0;
-
-    pointer-events: none;
-
-    overflow: hidden;
-
-    z-index: 1;
-}}
-
-.heart {{
-    position: absolute;
-
-    bottom: -50px;
-
-    font-size: 22px;
-
-    animation: floatHeart linear infinite;
-
-    opacity: 0.7;
-}}
-
-.heart:nth-child(1) {{
-    left: 10%;
-    animation-duration: 8s;
-}}
-
-.heart:nth-child(2) {{
-    left: 25%;
-    animation-duration: 11s;
-}}
-
-.heart:nth-child(3) {{
-    left: 40%;
-    animation-duration: 9s;
-}}
-
-.heart:nth-child(4) {{
-    left: 55%;
-    animation-duration: 12s;
-}}
-
-.heart:nth-child(5) {{
-    left: 70%;
-    animation-duration: 10s;
-}}
-
-.heart:nth-child(6) {{
-    left: 82%;
-    animation-duration: 8s;
-}}
-
-.heart:nth-child(7) {{
-    left: 92%;
-    animation-duration: 13s;
-}}
-
-@keyframes floatHeart {{
-
-    0% {{
-        transform:
-            translateY(0)
-            rotate(0deg);
-
-        opacity: 0;
-    }}
-
-    15% {{
-        opacity: 0.8;
-    }}
-
-    100% {{
-        transform:
-            translateY(-850px)
-            rotate(360deg);
-
-        opacity: 0;
-    }}
-
-}}
-
-
-/* MUSIC BUTTON */
-
-.music-btn {{
+.music-button {{
     margin-top: 20px;
-
-    padding: 10px 18px;
-
-    border-radius: 30px;
 
     border: 1px solid rgba(255,255,255,0.25);
 
-    background: rgba(255,255,255,0.10);
+    padding: 12px 22px;
+
+    border-radius: 30px;
 
     color: white;
 
+    background: rgba(255,255,255,0.10);
+
     cursor: pointer;
 
-    font-size: 14px;
-
-    backdrop-filter: blur(10px);
+    font-size: 15px;
 
     transition: 0.3s;
 }}
 
-.music-btn:hover {{
-    background: rgba(255,255,255,0.20);
+.music-button:hover {{
+    background: rgba(255,255,255,0.18);
 
-    transform: scale(1.05);
+    transform: scale(1.03);
 }}
 
 
-/* FOOTER */
+/* -----------------------------
+   FOOTER
+----------------------------- */
 
 .footer {{
-    margin-top: 25px;
+    margin-top: 45px;
 
-    font-size: 13px;
+    font-size: 14px;
 
-    color: #e9cfe0;
+    opacity: 0.55;
 }}
 
 
-/* MOBILE */
+/* -----------------------------
+   MOBILE
+----------------------------- */
 
 @media (max-width: 600px) {{
 
@@ -519,6 +442,7 @@ h1 {{
 
     .photos {{
         width: min(260px, 85vw);
+
         height: 320px;
     }}
 
@@ -527,7 +451,11 @@ h1 {{
         height: 100%;
     }}
 
-    .message {{
+    .birthday-wish {{
+        padding: 25px 18px;
+    }}
+
+    .birthday-wish p {{
         font-size: 16px;
     }}
 
@@ -541,51 +469,30 @@ h1 {{
 <body>
 
 
-<div class="page">
-
-
-<!-- FLOATING HEARTS -->
-
-<div class="hearts">
-
-<div class="heart">❤️</div>
-<div class="heart">💖</div>
-<div class="heart">💕</div>
-<div class="heart">💗</div>
-<div class="heart">❤️</div>
-<div class="heart">💞</div>
-<div class="heart">💖</div>
-
-</div>
-
-
-<!-- MAIN CARD -->
+<div class="container">
 
 <div class="card">
 
 
 <!-- OPENING SCREEN -->
 
-<div id="opening">
-
-<div class="small">
-A SPECIAL SURPRISE
-</div>
+<div id="opening" class="opening">
 
 <h1>
-For You ❤️
+A SPECIAL SURPRISE
 </h1>
 
-<p class="message">
+<p>
+For You ❤️
+<br><br>
 Someone has created something special just for you...
 </p>
 
 <button
-class="open-btn"
-onclick="openGift()">
-
-Open My Surprise 💌
-
+class="open-button"
+onclick="openSurprise()"
+>
+💌 Open My Surprise
 </button>
 
 </div>
@@ -596,7 +503,7 @@ Open My Surprise 💌
 <div id="surprise" class="hidden">
 
 
-<div class="small">
+<div class="surprise-title">
 THIS ONE IS FOR
 </div>
 
@@ -606,67 +513,24 @@ Charitha ❤️
 </div>
 
 
+<div class="subtitle">
+A little surprise, made especially for you.
+</div>
+
+
 <!-- PHOTOS -->
 
 <div class="photos">
 
 <img
-src="data:image/jpeg;base64,{photo1}"
 class="photo"
-alt="Charitha Photo 1"
+src="data:image/jpeg;base64,{photo1_base64}"
 >
 
 <img
-src="data:image/jpeg;base64,{photo2}"
 class="photo"
-alt="Charitha Photo 2"
+src="data:image/jpeg;base64,{photo2_base64}"
 >
-
-</div>
-
-
-<!-- MESSAGE -->
-
-<p class="message">
-
-A little surprise, made especially for you.
-
-<br>
-<br>
-
-And this is only the beginning... ✨
-
-</p>
-
-
-<div style="font-size:45px;">
-🌹 💖 🌹
-</div>
-
-
-<!-- MUSIC CONTROL -->
-
-<button
-id="musicButton"
-class="music-btn"
-onclick="toggleMusic()">
-
-🎵 Music On
-
-</button>
-
-
-<div class="footer">
-
-Made with ❤️ specially for Charitha
-
-</div>
-
-
-</div>
-
-
-</div>
 
 </div>
 
@@ -674,82 +538,96 @@ Made with ❤️ specially for Charitha
 <!-- MUSIC -->
 
 <audio
-id="bgMusic"
-preload="auto"
-loop>
+id="birthdaySong"
+loop
+>
 
 <source
-src="data:audio/mpeg;base64,{song}"
-type="audio/mpeg">
+src="data:audio/mpeg;base64,{song_base64}"
+type="audio/mpeg"
+>
 
 </audio>
 
 
+<button
+class="music-button"
+onclick="toggleMusic()"
+id="musicButton"
+>
+⏸️ Pause Music
+</button>
+
+
+<!-- BIRTHDAY WISH -->
+
+<div class="birthday-wish">
+
+<h2>
+🎂 Happy Birthday, Charitha! ❤️
+</h2>
+
+<p>
+Wishing you lots of happiness, smiles and beautiful moments. ✨
+</p>
+
+<p>
+Have a wonderful birthday! 🥳💖
+</p>
+
+<div class="from">
+— With love, Jagan ❤️
+</div>
+
+</div>
+
+
+<div class="footer">
+Made with ❤️ specially for Charitha
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+
 <script>
 
-
-/* OPEN SURPRISE */
-
-function openGift() {{
+function openSurprise() {{
 
     document.getElementById("opening").style.display = "none";
 
-    const surprise =
-        document.getElementById("surprise");
+    document.getElementById("surprise").style.display = "block";
 
-    surprise.classList.remove("hidden");
+    const song = document.getElementById("birthdaySong");
 
-    surprise.classList.add("reveal");
-
-
-    /* START MUSIC AFTER BUTTON CLICK */
-
-    const music =
-        document.getElementById("bgMusic");
-
-    music.volume = 0.55;
-
-    music.play().then(() => {{
-
-        document.getElementById("musicButton").innerHTML =
-            "🎵 Music On";
-
-    }}).catch(() => {{
-
-        document.getElementById("musicButton").innerHTML =
-            "🎵 Tap Music";
-
+    song.play().catch(function(error) {{
+        console.log("Autoplay was blocked:", error);
     }});
 
 }}
 
 
-/* MUSIC ON / OFF */
-
 function toggleMusic() {{
 
-    const music =
-        document.getElementById("bgMusic");
+    const song = document.getElementById("birthdaySong");
 
-    const button =
-        document.getElementById("musicButton");
+    const button = document.getElementById("musicButton");
 
+    if (song.paused) {{
 
-    if (music.paused) {{
+        song.play();
 
-        music.play().then(() => {{
-
-            button.innerHTML =
-                "🎵 Music On";
-
-        }});
+        button.innerHTML = "⏸️ Pause Music";
 
     }} else {{
 
-        music.pause();
+        song.pause();
 
-        button.innerHTML =
-            "🔇 Music Off";
+        button.innerHTML = "▶️ Play Music";
 
     }}
 
@@ -763,6 +641,10 @@ function toggleMusic() {{
 </html>
 """
 
+
+# -----------------------------
+# DISPLAY APP
+# -----------------------------
 
 components.html(
     html_code,
