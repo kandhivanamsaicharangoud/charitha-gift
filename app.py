@@ -29,7 +29,7 @@ for file_path in [song_path, photo1_path, photo2_path]:
 
 
 # -----------------------------
-# CONVERT FILES TO BASE64
+# BASE64 CONVERSION
 # -----------------------------
 
 with open(song_path, "rb") as f:
@@ -43,7 +43,7 @@ with open(photo2_path, "rb") as f:
 
 
 # -----------------------------
-# HTML + CSS + JAVASCRIPT
+# HTML
 # -----------------------------
 
 html_code = f"""
@@ -64,27 +64,43 @@ html_code = f"""
 body {{
     margin: 0;
     padding: 0;
+
     font-family: Arial, Helvetica, sans-serif;
 
     background:
-        radial-gradient(circle at top, #35104f 0%, #16091f 45%, #08050c 100%);
+        radial-gradient(
+            circle at top,
+            #35104f 0%,
+            #16091f 45%,
+            #08050c 100%
+        );
 
     color: white;
+
     min-height: 100vh;
 }}
+
+
+/* MAIN CONTAINER */
 
 .container {{
     min-height: 100vh;
 
     display: flex;
+
     justify-content: center;
+
     align-items: center;
 
     padding: 30px 15px;
 }}
 
+
+/* CARD */
+
 .card {{
     width: 100%;
+
     max-width: 850px;
 
     padding: 55px 30px;
@@ -107,6 +123,7 @@ body {{
 }}
 
 @keyframes cardAppear {{
+
     from {{
         opacity: 0;
         transform: translateY(30px);
@@ -116,30 +133,34 @@ body {{
         opacity: 1;
         transform: translateY(0);
     }}
+
 }}
 
 
-/* -----------------------------
-   OPENING SCREEN
------------------------------ */
+/* OPENING */
 
 .opening h1 {{
+
     font-size: clamp(32px, 7vw, 55px);
 
     margin-bottom: 15px;
 
-    background: linear-gradient(
-        90deg,
-        #ffffff,
-        #ff9de2,
-        #ffffff
-    );
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #ff9de2,
+            #ffffff
+        );
 
     -webkit-background-clip: text;
+
     -webkit-text-fill-color: transparent;
 }}
 
+
 .opening p {{
+
     font-size: 18px;
 
     line-height: 1.7;
@@ -150,11 +171,10 @@ body {{
 }}
 
 
-/* -----------------------------
-   BUTTON
------------------------------ */
+/* OPEN BUTTON */
 
 .open-button {{
+
     border: none;
 
     padding: 16px 32px;
@@ -169,11 +189,12 @@ body {{
 
     color: white;
 
-    background: linear-gradient(
-        135deg,
-        #ff3cac,
-        #784ba0
-    );
+    background:
+        linear-gradient(
+            135deg,
+            #ff3cac,
+            #784ba0
+        );
 
     box-shadow:
         0 10px 30px rgba(255,60,190,0.35);
@@ -181,7 +202,9 @@ body {{
     transition: all 0.3s ease;
 }}
 
+
 .open-button:hover {{
+
     transform: translateY(-4px) scale(1.03);
 
     box-shadow:
@@ -189,15 +212,17 @@ body {{
 }}
 
 
-/* -----------------------------
-   SURPRISE
------------------------------ */
+/* HIDDEN */
 
 .hidden {{
     display: none;
 }}
 
+
+/* SURPRISE TITLE */
+
 .surprise-title {{
+
     margin-bottom: 10px;
 
     font-size: 18px;
@@ -207,35 +232,55 @@ body {{
     opacity: 0.65;
 }}
 
+
+/* OYE */
+
 .name {{
-    font-size: clamp(45px, 10vw, 80px);
+
+    font-size: clamp(50px, 11vw, 85px);
 
     margin: 10px 0 15px;
 
-    background: linear-gradient(
-        90deg,
-        #ff7bd5,
-        #ffffff,
-        #ff7bd5
-    );
+    background:
+        linear-gradient(
+            90deg,
+            #ff7bd5,
+            #ffffff,
+            #ff7bd5
+        );
 
     -webkit-background-clip: text;
+
     -webkit-text-fill-color: transparent;
 
-    animation: nameGlow 2s ease-in-out infinite alternate;
+    animation:
+        nameGlow 2s ease-in-out infinite alternate;
 }}
 
+
 @keyframes nameGlow {{
+
     from {{
-        filter: drop-shadow(0 0 5px rgba(255,80,200,0.3));
+        filter:
+            drop-shadow(
+                0 0 5px rgba(255,80,200,0.3)
+            );
     }}
 
     to {{
-        filter: drop-shadow(0 0 25px rgba(255,80,200,0.8));
+        filter:
+            drop-shadow(
+                0 0 25px rgba(255,80,200,0.8)
+            );
     }}
+
 }}
 
+
+/* SUBTITLE */
+
 .subtitle {{
+
     font-size: 18px;
 
     opacity: 0.8;
@@ -244,11 +289,10 @@ body {{
 }}
 
 
-/* -----------------------------
-   PHOTOS
------------------------------ */
+/* PHOTOS */
 
 .photos {{
+
     position: relative;
 
     width: min(300px, 85vw);
@@ -260,13 +304,17 @@ body {{
     display: block;
 }}
 
+
 .photo {{
+
     position: absolute;
 
     top: 0;
+
     left: 0;
 
     width: 100%;
+
     height: 100%;
 
     object-fit: cover;
@@ -275,9 +323,11 @@ body {{
 
     border-radius: 28px;
 
-    border: 1px solid rgba(255,255,255,0.4);
+    border:
+        1px solid rgba(255,255,255,0.4);
 
-    background: rgba(255,255,255,0.12);
+    background:
+        rgba(255,255,255,0.12);
 
     box-shadow:
         0 20px 50px rgba(0,0,0,0.55),
@@ -285,16 +335,20 @@ body {{
 
     opacity: 0;
 
-    animation: photoSlide 8s infinite;
+    animation:
+        photoSlide 8s infinite;
 }}
+
 
 .photo:nth-child(1) {{
     animation-delay: 0s;
 }}
 
+
 .photo:nth-child(2) {{
     animation-delay: 4s;
 }}
+
 
 @keyframes photoSlide {{
 
@@ -321,14 +375,14 @@ body {{
     100% {{
         opacity: 0;
     }}
+
 }}
 
 
-/* -----------------------------
-   BIRTHDAY WISH
------------------------------ */
+/* BIRTHDAY WISH */
 
 .birthday-wish {{
+
     margin: 50px auto 30px;
 
     padding: 32px 24px;
@@ -337,30 +391,39 @@ body {{
 
     border-radius: 28px;
 
-    background: rgba(255,255,255,0.10);
+    background:
+        rgba(255,255,255,0.10);
 
-    border: 1px solid rgba(255,255,255,0.25);
+    border:
+        1px solid rgba(255,255,255,0.25);
 
     box-shadow:
         0 15px 40px rgba(0,0,0,0.35),
         0 0 30px rgba(255,70,190,0.18);
 
-    animation: wishAppear 2s ease;
+    animation:
+        wishAppear 2s ease;
 }}
 
+
 .birthday-wish h2 {{
-    font-size: clamp(28px, 6vw, 42px);
+
+    font-size:
+        clamp(28px, 6vw, 42px);
 
     margin-bottom: 20px;
 }}
 
+
 .birthday-wish p {{
+
     font-size: 18px;
 
     line-height: 1.7;
 
     opacity: 0.9;
 }}
+
 
 @keyframes wishAppear {{
 
@@ -373,9 +436,14 @@ body {{
         opacity: 1;
         transform: translateY(0);
     }}
+
 }}
 
+
+/* FROM JAGAN */
+
 .from {{
+
     margin-top: 25px;
 
     font-size: 20px;
@@ -386,14 +454,14 @@ body {{
 }}
 
 
-/* -----------------------------
-   MUSIC BUTTON
------------------------------ */
+/* MUSIC BUTTON */
 
 .music-button {{
+
     margin-top: 20px;
 
-    border: 1px solid rgba(255,255,255,0.25);
+    border:
+        1px solid rgba(255,255,255,0.25);
 
     padding: 12px 22px;
 
@@ -401,7 +469,8 @@ body {{
 
     color: white;
 
-    background: rgba(255,255,255,0.10);
+    background:
+        rgba(255,255,255,0.10);
 
     cursor: pointer;
 
@@ -410,18 +479,20 @@ body {{
     transition: 0.3s;
 }}
 
+
 .music-button:hover {{
-    background: rgba(255,255,255,0.18);
+
+    background:
+        rgba(255,255,255,0.18);
 
     transform: scale(1.03);
 }}
 
 
-/* -----------------------------
-   FOOTER
------------------------------ */
+/* FOOTER */
 
 .footer {{
+
     margin-top: 45px;
 
     font-size: 14px;
@@ -430,9 +501,7 @@ body {{
 }}
 
 
-/* -----------------------------
-   MOBILE
------------------------------ */
+/* MOBILE */
 
 @media (max-width: 600px) {{
 
@@ -441,21 +510,26 @@ body {{
     }}
 
     .photos {{
+
         width: min(260px, 85vw);
 
         height: 320px;
     }}
 
     .photo {{
+
         width: 100%;
+
         height: 100%;
     }}
 
     .birthday-wish {{
+
         padding: 25px 18px;
     }}
 
     .birthday-wish p {{
+
         font-size: 16px;
     }}
 
@@ -509,7 +583,7 @@ THIS ONE IS FOR
 
 
 <div class="name">
-Charitha ❤️
+OYE ❤️
 </div>
 
 
@@ -564,7 +638,7 @@ id="musicButton"
 <div class="birthday-wish">
 
 <h2>
-🎂 Happy Birthday, Charitha! ❤️
+🎂 Happy Birthday, OYE! ❤️
 </h2>
 
 <p>
@@ -583,7 +657,7 @@ Have a wonderful birthday! 🥳💖
 
 
 <div class="footer">
-Made with ❤️ specially for Charitha
+Made with ❤️ specially for OYE
 </div>
 
 
@@ -602,10 +676,16 @@ function openSurprise() {{
 
     document.getElementById("surprise").style.display = "block";
 
-    const song = document.getElementById("birthdaySong");
+    const song =
+        document.getElementById("birthdaySong");
 
     song.play().catch(function(error) {{
-        console.log("Autoplay was blocked:", error);
+
+        console.log(
+            "Autoplay was blocked:",
+            error
+        );
+
     }});
 
 }}
@@ -613,21 +693,26 @@ function openSurprise() {{
 
 function toggleMusic() {{
 
-    const song = document.getElementById("birthdaySong");
+    const song =
+        document.getElementById("birthdaySong");
 
-    const button = document.getElementById("musicButton");
+    const button =
+        document.getElementById("musicButton");
+
 
     if (song.paused) {{
 
         song.play();
 
-        button.innerHTML = "⏸️ Pause Music";
+        button.innerHTML =
+            "⏸️ Pause Music";
 
     }} else {{
 
         song.pause();
 
-        button.innerHTML = "▶️ Play Music";
+        button.innerHTML =
+            "▶️ Play Music";
 
     }}
 
@@ -643,11 +728,11 @@ function toggleMusic() {{
 
 
 # -----------------------------
-# DISPLAY APP
+# DISPLAY
 # -----------------------------
 
 components.html(
     html_code,
     height=1800,
-    scrolling=False
+    scrolling=True
 )
