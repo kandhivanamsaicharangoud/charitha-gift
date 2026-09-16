@@ -325,45 +325,78 @@ h1 {{
 }}
 
 
-/* PHOTO SECTION */
+/* PREMIUM GLASS PHOTO SECTION */
 
 .photos {{
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
-    gap: 20px;
-
+    gap: 28px;
     flex-wrap: wrap;
-
-    margin: 20px auto;
+    margin: 30px auto;
+    perspective: 1000px;
 }}
-
 
 .photo {{
     width: 220px;
-
-    height: 220px;
-
+    height: 270px;
     object-fit: cover;
 
-    border-radius: 20px;
+    padding: 7px;
 
-    border:
-        4px solid #ff76d0;
+    border-radius: 28px;
+
+    border: 1px solid rgba(255,255,255,0.35);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.30),
+            rgba(255,255,255,0.06)
+        );
 
     box-shadow:
-        0 0 30px
-        rgba(255,50,190,0.6);
+        0 15px 35px rgba(0,0,0,0.45),
+        0 0 25px rgba(255,50,190,0.35);
 
-    transition: 0.3s;
+    backdrop-filter: blur(12px);
+
+    transition:
+        transform 0.5s ease,
+        box-shadow 0.5s ease;
+
+    animation: photoReveal 1.2s ease both;
 }}
 
+.photo:nth-child(2) {{
+    animation-delay: 0.25s;
+}}
 
 .photo:hover {{
-    transform: scale(1.04);
+    transform:
+        translateY(-10px)
+        scale(1.04)
+        rotateY(3deg);
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,0.55),
+        0 0 40px rgba(255,50,190,0.75);
+}}
+
+@keyframes photoReveal {{
+    from {{
+        opacity: 0;
+        transform:
+            translateY(40px)
+            scale(0.85);
+    }}
+
+    to {{
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }}
 }}
 
 
@@ -393,8 +426,7 @@ h1 {{
 
     .photo {{
         width: 145px;
-
-        height: 145px;
+        height: 185px;
     }}
 
     .message {{
