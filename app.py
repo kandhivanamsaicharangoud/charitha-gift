@@ -16,38 +16,26 @@ def get_base64(path):
         return base64.b64encode(file.read()).decode("utf-8")
 
 
-# -----------------------------
 # FILE PATHS
-# -----------------------------
-
 photo1_path = "assets/charitha1.jpg"
 photo2_path = "assets/charitha2.jpg"
 song_path = "assets/jo tum mereho.mpeg"
 
 
-# -----------------------------
 # CHECK FILES
-# -----------------------------
-
 for file_path in [photo1_path, photo2_path, song_path]:
     if not os.path.exists(file_path):
         st.error(f"File not found: {file_path}")
         st.stop()
 
 
-# -----------------------------
 # CONVERT FILES TO BASE64
-# -----------------------------
-
 photo1 = get_base64(photo1_path)
 photo2 = get_base64(photo2_path)
 song = get_base64(song_path)
 
 
-# -----------------------------
 # HTML + CSS + JAVASCRIPT
-# -----------------------------
-
 html_code = f"""
 <!DOCTYPE html>
 <html>
@@ -142,7 +130,12 @@ h1 {{
 
     margin: 10px 0 20px;
 
-    background: linear-gradient(90deg, #ffffff, #ffb6dc, #ffffff);
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #ffb6dc,
+        #ffffff
+    );
 
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -151,13 +144,19 @@ h1 {{
 }}
 
 @keyframes titleGlow {{
+
     from {{
-        filter: drop-shadow(0 0 5px rgba(255,120,200,0.3));
+        filter: drop-shadow(
+            0 0 5px rgba(255,120,200,0.3)
+        );
     }}
 
     to {{
-        filter: drop-shadow(0 0 25px rgba(255,120,200,0.9));
+        filter: drop-shadow(
+            0 0 25px rgba(255,120,200,0.9)
+        );
     }}
+
 }}
 
 
@@ -180,12 +179,15 @@ h1 {{
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
-    filter: drop-shadow(0 0 18px rgba(255,80,190,0.7));
+    filter: drop-shadow(
+        0 0 18px rgba(255,80,190,0.7)
+    );
 
     animation: nameAppear 1.2s ease;
 }}
 
 @keyframes nameAppear {{
+
     from {{
         opacity: 0;
         transform: scale(0.7);
@@ -195,6 +197,7 @@ h1 {{
         opacity: 1;
         transform: scale(1);
     }}
+
 }}
 
 
@@ -252,30 +255,29 @@ h1 {{
 }}
 
 
-/* PHOTOS */
+/* PREMIUM PHOTO SLIDESHOW */
 
 .photos {{
-    display: flex;
+    position: relative;
 
-    justify-content: center;
+    width: min(300px, 85vw);
 
-    align-items: center;
-
-    gap: 28px;
-
-    flex-wrap: wrap;
+    height: 360px;
 
     margin: 35px auto;
 
-    perspective: 1000px;
+    display: block;
 }}
 
 
-/* PREMIUM PHOTO CARD */
-
 .photo {{
-    width: 220px;
-    height: 270px;
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
 
     object-fit: cover;
 
@@ -283,95 +285,69 @@ h1 {{
 
     border-radius: 28px;
 
-    border: 1px solid rgba(255,255,255,0.35);
+    border: 1px solid rgba(255,255,255,0.4);
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,0.30),
-            rgba(255,255,255,0.06)
-        );
+    background: rgba(255,255,255,0.12);
 
     box-shadow:
-        0 15px 35px rgba(0,0,0,0.45),
-        0 0 25px rgba(255,50,190,0.35);
+        0 20px 50px rgba(0,0,0,0.55),
+        0 0 35px rgba(255,50,190,0.5);
 
-    backdrop-filter: blur(12px);
+    opacity: 0;
 
-    transition:
-        transform 0.5s ease,
-        box-shadow 0.5s ease;
+    animation: photoSlide 8s infinite;
 
-    animation: photoReveal 1.2s ease both;
+    transition: transform 0.4s ease;
 }}
 
 
-/* SECOND PHOTO DELAY */
+/* PHOTO 1 */
+
+.photo:nth-child(1) {{
+    animation-delay: 0s;
+}}
+
+
+/* PHOTO 2 */
 
 .photo:nth-child(2) {{
-    animation-delay: 0.25s;
+    animation-delay: 4s;
 }}
 
 
 /* PHOTO HOVER */
 
 .photo:hover {{
-    transform:
-        translateY(-12px)
-        scale(1.05)
-        rotateY(4deg);
-
-    box-shadow:
-        0 20px 45px rgba(0,0,0,0.55),
-        0 0 45px rgba(255,50,190,0.8);
+    transform: scale(1.04);
 }}
 
 
-/* PHOTO REVEAL */
+/* PHOTO SLIDESHOW ANIMATION */
 
-@keyframes photoReveal {{
+@keyframes photoSlide {{
 
-    from {{
+    0% {{
         opacity: 0;
-
-        transform:
-            translateY(50px)
-            scale(0.8)
-            rotateY(-10deg);
+        transform: scale(0.92);
     }}
 
-    to {{
+    8% {{
         opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1)
-            rotateY(0);
+        transform: scale(1);
     }}
 
-}}
-
-
-/* FLOATING PHOTO ANIMATION */
-
-.photo {{
-    animation:
-        photoReveal 1.2s ease both,
-        photoFloat 5s ease-in-out infinite;
-}}
-
-.photo:nth-child(2) {{
-    animation-delay: 0.25s, 1.2s;
-}}
-
-@keyframes photoFloat {{
-
-    0%, 100% {{
-        transform: translateY(0);
+    42% {{
+        opacity: 1;
+        transform: scale(1.04);
     }}
 
     50% {{
-        transform: translateY(-8px);
+        opacity: 0;
+        transform: scale(1.08);
+    }}
+
+    100% {{
+        opacity: 0;
     }}
 
 }}
@@ -541,13 +517,14 @@ h1 {{
         padding: 35px 18px;
     }}
 
-    .photo {{
-        width: 145px;
-        height: 185px;
+    .photos {{
+        width: min(260px, 85vw);
+        height: 320px;
     }}
 
-    .photos {{
-        gap: 15px;
+    .photo {{
+        width: 100%;
+        height: 100%;
     }}
 
     .message {{
