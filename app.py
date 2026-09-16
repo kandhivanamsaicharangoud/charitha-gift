@@ -78,10 +78,14 @@ body {{
     color: white;
 
     min-height: 100vh;
+
+    overflow-x: hidden;
 }}
 
 
-/* MAIN CONTAINER */
+/* -----------------------------
+   MAIN CONTAINER
+----------------------------- */
 
 .container {{
     min-height: 100vh;
@@ -96,8 +100,6 @@ body {{
 }}
 
 
-/* CARD */
-
 .card {{
     width: 100%;
 
@@ -109,9 +111,11 @@ body {{
 
     border-radius: 35px;
 
-    background: rgba(255,255,255,0.08);
+    background:
+        rgba(255,255,255,0.08);
 
-    border: 1px solid rgba(255,255,255,0.20);
+    border:
+        1px solid rgba(255,255,255,0.20);
 
     box-shadow:
         0 25px 70px rgba(0,0,0,0.55),
@@ -120,7 +124,12 @@ body {{
     backdrop-filter: blur(15px);
 
     animation: cardAppear 1.2s ease;
+
+    position: relative;
+
+    z-index: 2;
 }}
+
 
 @keyframes cardAppear {{
 
@@ -137,11 +146,14 @@ body {{
 }}
 
 
-/* OPENING */
+/* -----------------------------
+   OPENING SCREEN
+----------------------------- */
 
 .opening h1 {{
 
-    font-size: clamp(32px, 7vw, 55px);
+    font-size:
+        clamp(32px, 7vw, 55px);
 
     margin-bottom: 15px;
 
@@ -171,7 +183,9 @@ body {{
 }}
 
 
-/* OPEN BUTTON */
+/* -----------------------------
+   OPEN BUTTON
+----------------------------- */
 
 .open-button {{
 
@@ -199,27 +213,35 @@ body {{
     box-shadow:
         0 10px 30px rgba(255,60,190,0.35);
 
-    transition: all 0.3s ease;
+    transition:
+        all 0.3s ease;
 }}
 
 
 .open-button:hover {{
 
-    transform: translateY(-4px) scale(1.03);
+    transform:
+        translateY(-4px)
+        scale(1.03);
 
     box-shadow:
-        0 15px 40px rgba(255,60,190,0.55);
+        0 15px 40px
+        rgba(255,60,190,0.55);
 }}
 
 
-/* HIDDEN */
+/* -----------------------------
+   HIDDEN
+----------------------------- */
 
 .hidden {{
     display: none;
 }}
 
 
-/* SURPRISE TITLE */
+/* -----------------------------
+   SURPRISE TITLE
+----------------------------- */
 
 .surprise-title {{
 
@@ -233,13 +255,17 @@ body {{
 }}
 
 
-/* OYE */
+/* -----------------------------
+   OYE
+----------------------------- */
 
 .name {{
 
-    font-size: clamp(50px, 11vw, 85px);
+    font-size:
+        clamp(50px, 11vw, 85px);
 
-    margin: 10px 0 15px;
+    margin:
+        10px 0 15px;
 
     background:
         linear-gradient(
@@ -254,7 +280,11 @@ body {{
     -webkit-text-fill-color: transparent;
 
     animation:
-        nameGlow 2s ease-in-out infinite alternate;
+        nameGlow
+        2s
+        ease-in-out
+        infinite
+        alternate;
 }}
 
 
@@ -263,21 +293,25 @@ body {{
     from {{
         filter:
             drop-shadow(
-                0 0 5px rgba(255,80,200,0.3)
+                0 0 5px
+                rgba(255,80,200,0.3)
             );
     }}
 
     to {{
         filter:
             drop-shadow(
-                0 0 25px rgba(255,80,200,0.8)
+                0 0 25px
+                rgba(255,80,200,0.8)
             );
     }}
 
 }}
 
 
-/* SUBTITLE */
+/* -----------------------------
+   SUBTITLE
+----------------------------- */
 
 .subtitle {{
 
@@ -289,13 +323,16 @@ body {{
 }}
 
 
-/* PHOTOS */
+/* -----------------------------
+   PHOTOS
+----------------------------- */
 
 .photos {{
 
     position: relative;
 
-    width: min(300px, 85vw);
+    width:
+        min(300px, 85vw);
 
     height: 360px;
 
@@ -324,19 +361,25 @@ body {{
     border-radius: 28px;
 
     border:
-        1px solid rgba(255,255,255,0.4);
+        1px solid
+        rgba(255,255,255,0.4);
 
     background:
         rgba(255,255,255,0.12);
 
     box-shadow:
-        0 20px 50px rgba(0,0,0,0.55),
-        0 0 35px rgba(255,50,190,0.5);
+        0 20px 50px
+        rgba(0,0,0,0.55),
+
+        0 0 35px
+        rgba(255,50,190,0.5);
 
     opacity: 0;
 
     animation:
-        photoSlide 8s infinite;
+        photoSlide
+        8s
+        infinite;
 }}
 
 
@@ -379,13 +422,17 @@ body {{
 }}
 
 
-/* BIRTHDAY WISH */
+/* -----------------------------
+   BIRTHDAY WISH
+----------------------------- */
 
 .birthday-wish {{
 
-    margin: 50px auto 30px;
+    margin:
+        50px auto 30px;
 
-    padding: 32px 24px;
+    padding:
+        32px 24px;
 
     max-width: 700px;
 
@@ -395,14 +442,20 @@ body {{
         rgba(255,255,255,0.10);
 
     border:
-        1px solid rgba(255,255,255,0.25);
+        1px solid
+        rgba(255,255,255,0.25);
 
     box-shadow:
-        0 15px 40px rgba(0,0,0,0.35),
-        0 0 30px rgba(255,70,190,0.18);
+        0 15px 40px
+        rgba(0,0,0,0.35),
+
+        0 0 30px
+        rgba(255,70,190,0.18);
 
     animation:
-        wishAppear 2s ease;
+        wishAppear
+        2s
+        ease;
 }}
 
 
@@ -440,7 +493,9 @@ body {{
 }}
 
 
-/* FROM JAGAN */
+/* -----------------------------
+   FROM JAGAN
+----------------------------- */
 
 .from {{
 
@@ -454,16 +509,20 @@ body {{
 }}
 
 
-/* MUSIC BUTTON */
+/* -----------------------------
+   MUSIC BUTTON
+----------------------------- */
 
 .music-button {{
 
     margin-top: 20px;
 
     border:
-        1px solid rgba(255,255,255,0.25);
+        1px solid
+        rgba(255,255,255,0.25);
 
-    padding: 12px 22px;
+    padding:
+        12px 22px;
 
     border-radius: 30px;
 
@@ -489,7 +548,9 @@ body {{
 }}
 
 
-/* FOOTER */
+/* -----------------------------
+   FOOTER
+----------------------------- */
 
 .footer {{
 
@@ -501,7 +562,112 @@ body {{
 }}
 
 
-/* MOBILE */
+/* =================================================
+   FLOATING HEARTS
+================================================= */
+
+.heart {{
+
+    position: fixed;
+
+    bottom: -50px;
+
+    font-size: 25px;
+
+    pointer-events: none;
+
+    z-index: 10;
+
+    animation:
+        floatHeart
+        linear
+        forwards;
+}}
+
+
+@keyframes floatHeart {{
+
+    0% {{
+        transform:
+            translateY(0)
+            rotate(0deg)
+            scale(0.7);
+
+        opacity: 0;
+    }}
+
+    10% {{
+        opacity: 1;
+    }}
+
+    50% {{
+        transform:
+            translateY(-50vh)
+            rotate(180deg)
+            scale(1);
+    }}
+
+    100% {{
+        transform:
+            translateY(-115vh)
+            rotate(360deg)
+            scale(0.8);
+
+        opacity: 0;
+    }}
+
+}}
+
+
+/* =================================================
+   CONFETTI
+================================================= */
+
+.confetti {{
+
+    position: fixed;
+
+    top: -20px;
+
+    width: 9px;
+
+    height: 16px;
+
+    pointer-events: none;
+
+    z-index: 20;
+
+    animation:
+        confettiFall
+        linear
+        forwards;
+}}
+
+
+@keyframes confettiFall {{
+
+    0% {{
+        transform:
+            translateY(-20px)
+            rotate(0deg);
+
+        opacity: 1;
+    }}
+
+    100% {{
+        transform:
+            translateY(110vh)
+            rotate(720deg);
+
+        opacity: 0;
+    }}
+
+}}
+
+
+/* -----------------------------
+   MOBILE
+----------------------------- */
 
 @media (max-width: 600px) {{
 
@@ -511,7 +677,8 @@ body {{
 
     .photos {{
 
-        width: min(260px, 85vw);
+        width:
+            min(260px, 85vw);
 
         height: 320px;
     }}
@@ -525,7 +692,8 @@ body {{
 
     .birthday-wish {{
 
-        padding: 25px 18px;
+        padding:
+            25px 18px;
     }}
 
     .birthday-wish p {{
@@ -548,7 +716,9 @@ body {{
 <div class="card">
 
 
-<!-- OPENING SCREEN -->
+<!-- =========================
+     OPENING SCREEN
+========================= -->
 
 <div id="opening" class="opening">
 
@@ -572,7 +742,9 @@ onclick="openSurprise()"
 </div>
 
 
-<!-- SURPRISE SCREEN -->
+<!-- =========================
+     SURPRISE SCREEN
+========================= -->
 
 <div id="surprise" class="hidden">
 
@@ -592,7 +764,9 @@ A little surprise, made especially for you.
 </div>
 
 
-<!-- PHOTOS -->
+<!-- =========================
+     PHOTOS
+========================= -->
 
 <div class="photos">
 
@@ -609,7 +783,9 @@ src="data:image/jpeg;base64,{photo2_base64}"
 </div>
 
 
-<!-- MUSIC -->
+<!-- =========================
+     MUSIC
+========================= -->
 
 <audio
 id="birthdaySong"
@@ -633,7 +809,9 @@ id="musicButton"
 </button>
 
 
-<!-- BIRTHDAY WISH -->
+<!-- =========================
+     BIRTHDAY WISH
+========================= -->
 
 <div class="birthday-wish">
 
@@ -642,7 +820,8 @@ id="musicButton"
 </h2>
 
 <p>
-Wishing you lots of happiness, smiles and beautiful moments. ✨
+Wishing you lots of happiness,
+smiles and beautiful moments. ✨
 </p>
 
 <p>
@@ -670,34 +849,66 @@ Made with ❤️ specially for OYE
 
 <script>
 
+
+/* =================================================
+   OPEN SURPRISE
+================================================= */
+
 function openSurprise() {{
 
-    document.getElementById("opening").style.display = "none";
+    document.getElementById(
+        "opening"
+    ).style.display = "none";
 
-    document.getElementById("surprise").style.display = "block";
+
+    document.getElementById(
+        "surprise"
+    ).style.display = "block";
+
 
     const song =
-        document.getElementById("birthdaySong");
-
-    song.play().catch(function(error) {{
-
-        console.log(
-            "Autoplay was blocked:",
-            error
+        document.getElementById(
+            "birthdaySong"
         );
 
-    }});
+
+    song.play().catch(
+        function(error) {{
+
+            console.log(
+                "Autoplay was blocked:",
+                error
+            );
+
+        }}
+    );
+
+
+    /* START ANIMATIONS */
+
+    createConfetti();
+
+    startHearts();
 
 }}
 
 
+/* =================================================
+   MUSIC
+================================================= */
+
 function toggleMusic() {{
 
     const song =
-        document.getElementById("birthdaySong");
+        document.getElementById(
+            "birthdaySong"
+        );
+
 
     const button =
-        document.getElementById("musicButton");
+        document.getElementById(
+            "musicButton"
+        );
 
 
     if (song.paused) {{
@@ -707,7 +918,9 @@ function toggleMusic() {{
         button.innerHTML =
             "⏸️ Pause Music";
 
-    }} else {{
+    }}
+
+    else {{
 
         song.pause();
 
@@ -717,6 +930,174 @@ function toggleMusic() {{
     }}
 
 }}
+
+
+/* =================================================
+   FLOATING HEARTS
+================================================= */
+
+function startHearts() {{
+
+    setInterval(
+        createHeart,
+        700
+    );
+
+}}
+
+
+function createHeart() {{
+
+    const heart =
+        document.createElement(
+            "div"
+        );
+
+
+    heart.className =
+        "heart";
+
+
+    const hearts = [
+        "❤️",
+        "💖",
+        "💕",
+        "💗",
+        "💓",
+        "💞"
+    ];
+
+
+    heart.innerHTML =
+        hearts[
+            Math.floor(
+                Math.random() *
+                hearts.length
+            )
+        ];
+
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+
+    heart.style.fontSize =
+        (18 + Math.random() * 20) + "px";
+
+
+    heart.style.animationDuration =
+        (5 + Math.random() * 4) + "s";
+
+
+    document.body.appendChild(
+        heart
+    );
+
+
+    setTimeout(
+        function() {{
+
+            heart.remove();
+
+        }},
+        10000
+    );
+
+}}
+
+
+/* =================================================
+   CONFETTI
+================================================= */
+
+function createConfetti() {{
+
+    for (
+        let i = 0;
+        i < 100;
+        i++
+    ) {{
+
+        setTimeout(
+            createConfettiPiece,
+            i * 20
+        );
+
+    }}
+
+}}
+
+
+function createConfettiPiece() {{
+
+    const piece =
+        document.createElement(
+            "div"
+        );
+
+
+    piece.className =
+        "confetti";
+
+
+    const confettiColors = [
+        "#ff3cac",
+        "#ffcc00",
+        "#00e5ff",
+        "#7cff00",
+        "#ffffff",
+        "#ff6b6b",
+        "#b967ff"
+    ];
+
+
+    piece.style.background =
+        confettiColors[
+            Math.floor(
+                Math.random() *
+                confettiColors.length
+            )
+        ];
+
+
+    piece.style.left =
+        Math.random() * 100 + "vw";
+
+
+    piece.style.width =
+        (5 + Math.random() * 7) + "px";
+
+
+    piece.style.height =
+        (8 + Math.random() * 12) + "px";
+
+
+    piece.style.animationDuration =
+        (3 + Math.random() * 3) + "s";
+
+
+    piece.style.transform =
+        "rotate(" +
+        Math.random() * 360 +
+        "deg)";
+
+
+    document.body.appendChild(
+        piece
+    );
+
+
+    setTimeout(
+        function() {{
+
+            piece.remove();
+
+        }},
+        7000
+    );
+
+}}
+
 
 </script>
 
@@ -728,7 +1109,7 @@ function toggleMusic() {{
 
 
 # -----------------------------
-# DISPLAY
+# DISPLAY APP
 # -----------------------------
 
 components.html(
