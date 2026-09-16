@@ -648,6 +648,6 @@ function toggleMusic() {{
 
 components.html(
     html_code,
-    height=1100,
+    height=1800,
     scrolling=False
 )
