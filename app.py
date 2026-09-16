@@ -789,6 +789,6 @@ function toggleMusic() {{
 
 components.html(
     html_code,
-    height=750,
+    height=1100,
     scrolling=False
 )
