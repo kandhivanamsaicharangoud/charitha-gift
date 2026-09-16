@@ -587,4 +587,3 @@ components.html(
     height=750,
     scrolling=False
 )
-```
