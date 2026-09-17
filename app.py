@@ -29,7 +29,7 @@ for file_path in [song_path, photo1_path, photo2_path]:
 
 
 # -----------------------------
-# BASE64 CONVERSION
+# BASE64
 # -----------------------------
 
 with open(song_path, "rb") as f:
@@ -83,9 +83,7 @@ body {{
 }}
 
 
-/* -----------------------------
-   MAIN CONTAINER
------------------------------ */
+/* MAIN */
 
 .container {{
     min-height: 100vh;
@@ -99,7 +97,6 @@ body {{
     padding: 30px 15px;
 }}
 
-
 .card {{
     width: 100%;
 
@@ -111,11 +108,9 @@ body {{
 
     border-radius: 35px;
 
-    background:
-        rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.08);
 
-    border:
-        1px solid rgba(255,255,255,0.20);
+    border: 1px solid rgba(255,255,255,0.20);
 
     box-shadow:
         0 25px 70px rgba(0,0,0,0.55),
@@ -123,37 +118,20 @@ body {{
 
     backdrop-filter: blur(15px);
 
-    animation: cardAppear 1.2s ease;
-
     position: relative;
 
     z-index: 2;
 }}
 
 
-@keyframes cardAppear {{
+/* OPENING */
 
-    from {{
-        opacity: 0;
-        transform: translateY(30px);
-    }}
-
-    to {{
-        opacity: 1;
-        transform: translateY(0);
-    }}
-
+.opening {{
+    animation: cardAppear 1.2s ease;
 }}
 
-
-/* -----------------------------
-   OPENING SCREEN
------------------------------ */
-
 .opening h1 {{
-
-    font-size:
-        clamp(32px, 7vw, 55px);
+    font-size: clamp(32px, 7vw, 55px);
 
     margin-bottom: 15px;
 
@@ -170,9 +148,7 @@ body {{
     -webkit-text-fill-color: transparent;
 }}
 
-
 .opening p {{
-
     font-size: 18px;
 
     line-height: 1.7;
@@ -182,13 +158,23 @@ body {{
     margin-bottom: 35px;
 }}
 
+@keyframes cardAppear {{
 
-/* -----------------------------
-   OPEN BUTTON
------------------------------ */
+    from {{
+        opacity: 0;
+        transform: translateY(30px);
+    }}
+
+    to {{
+        opacity: 1;
+        transform: translateY(0);
+    }}
+}}
+
+
+/* OPEN BUTTON */
 
 .open-button {{
-
     border: none;
 
     padding: 16px 32px;
@@ -213,13 +199,10 @@ body {{
     box-shadow:
         0 10px 30px rgba(255,60,190,0.35);
 
-    transition:
-        all 0.3s ease;
+    transition: all 0.3s ease;
 }}
 
-
 .open-button:hover {{
-
     transform:
         translateY(-4px)
         scale(1.03);
@@ -230,21 +213,16 @@ body {{
 }}
 
 
-/* -----------------------------
-   HIDDEN
------------------------------ */
+/* HIDDEN */
 
 .hidden {{
     display: none;
 }}
 
 
-/* -----------------------------
-   SURPRISE TITLE
------------------------------ */
+/* SURPRISE */
 
 .surprise-title {{
-
     margin-bottom: 10px;
 
     font-size: 18px;
@@ -254,18 +232,11 @@ body {{
     opacity: 0.65;
 }}
 
-
-/* -----------------------------
-   OYE
------------------------------ */
-
 .name {{
-
     font-size:
         clamp(50px, 11vw, 85px);
 
-    margin:
-        10px 0 15px;
+    margin: 10px 0 15px;
 
     background:
         linear-gradient(
@@ -287,7 +258,6 @@ body {{
         alternate;
 }}
 
-
 @keyframes nameGlow {{
 
     from {{
@@ -305,16 +275,9 @@ body {{
                 rgba(255,80,200,0.8)
             );
     }}
-
 }}
 
-
-/* -----------------------------
-   SUBTITLE
------------------------------ */
-
 .subtitle {{
-
     font-size: 18px;
 
     opacity: 0.8;
@@ -323,12 +286,9 @@ body {{
 }}
 
 
-/* -----------------------------
-   PHOTOS
------------------------------ */
+/* PHOTOS */
 
 .photos {{
-
     position: relative;
 
     width:
@@ -337,21 +297,15 @@ body {{
     height: 360px;
 
     margin: 40px auto;
-
-    display: block;
 }}
 
-
 .photo {{
-
     position: absolute;
 
     top: 0;
-
     left: 0;
 
     width: 100%;
-
     height: 100%;
 
     object-fit: cover;
@@ -368,30 +322,23 @@ body {{
         rgba(255,255,255,0.12);
 
     box-shadow:
-        0 20px 50px
-        rgba(0,0,0,0.55),
-
-        0 0 35px
-        rgba(255,50,190,0.5);
+        0 20px 50px rgba(0,0,0,0.55),
+        0 0 35px rgba(255,50,190,0.5);
 
     opacity: 0;
 
     animation:
         photoSlide
-        8s
-        infinite;
+        8s infinite;
 }}
-
 
 .photo:nth-child(1) {{
     animation-delay: 0s;
 }}
 
-
 .photo:nth-child(2) {{
     animation-delay: 4s;
 }}
-
 
 @keyframes photoSlide {{
 
@@ -418,111 +365,19 @@ body {{
     100% {{
         opacity: 0;
     }}
-
 }}
 
 
-/* -----------------------------
-   BIRTHDAY WISH
------------------------------ */
-
-.birthday-wish {{
-
-    margin:
-        50px auto 30px;
-
-    padding:
-        32px 24px;
-
-    max-width: 700px;
-
-    border-radius: 28px;
-
-    background:
-        rgba(255,255,255,0.10);
-
-    border:
-        1px solid
-        rgba(255,255,255,0.25);
-
-    box-shadow:
-        0 15px 40px
-        rgba(0,0,0,0.35),
-
-        0 0 30px
-        rgba(255,70,190,0.18);
-
-    animation:
-        wishAppear
-        2s
-        ease;
-}}
-
-
-.birthday-wish h2 {{
-
-    font-size:
-        clamp(28px, 6vw, 42px);
-
-    margin-bottom: 20px;
-}}
-
-
-.birthday-wish p {{
-
-    font-size: 18px;
-
-    line-height: 1.7;
-
-    opacity: 0.9;
-}}
-
-
-@keyframes wishAppear {{
-
-    from {{
-        opacity: 0;
-        transform: translateY(35px);
-    }}
-
-    to {{
-        opacity: 1;
-        transform: translateY(0);
-    }}
-
-}}
-
-
-/* -----------------------------
-   FROM JAGAN
------------------------------ */
-
-.from {{
-
-    margin-top: 25px;
-
-    font-size: 20px;
-
-    font-weight: bold;
-
-    opacity: 0.9;
-}}
-
-
-/* -----------------------------
-   MUSIC BUTTON
------------------------------ */
+/* MUSIC BUTTON */
 
 .music-button {{
-
     margin-top: 20px;
 
     border:
         1px solid
         rgba(255,255,255,0.25);
 
-    padding:
-        12px 22px;
+    padding: 12px 22px;
 
     border-radius: 30px;
 
@@ -538,9 +393,7 @@ body {{
     transition: 0.3s;
 }}
 
-
 .music-button:hover {{
-
     background:
         rgba(255,255,255,0.18);
 
@@ -548,12 +401,174 @@ body {{
 }}
 
 
-/* -----------------------------
-   FOOTER
------------------------------ */
+/* BIRTHDAY WISH */
+
+.birthday-wish {{
+    margin: 50px auto 30px;
+
+    padding: 32px 24px;
+
+    max-width: 700px;
+
+    border-radius: 28px;
+
+    background:
+        rgba(255,255,255,0.10);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.25);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.35),
+        0 0 30px rgba(255,70,190,0.18);
+
+    animation:
+        wishAppear
+        2s ease;
+}}
+
+.birthday-wish h2 {{
+    font-size:
+        clamp(28px, 6vw, 42px);
+
+    margin-bottom: 20px;
+}}
+
+.birthday-wish p {{
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    opacity: 0.9;
+}}
+
+@keyframes wishAppear {{
+
+    from {{
+        opacity: 0;
+        transform: translateY(35px);
+    }}
+
+    to {{
+        opacity: 1;
+        transform: translateY(0);
+    }}
+}}
+
+.from {{
+    margin-top: 25px;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    opacity: 0.9;
+}}
+
+
+/* FINAL SCREEN */
+
+.final-screen {{
+    margin-top: 60px;
+
+    padding: 45px 25px;
+
+    border-radius: 30px;
+
+    background:
+        rgba(255,255,255,0.07);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.18);
+
+    animation:
+        finalReveal
+        3s
+        ease;
+}}
+
+.final-screen h2 {{
+    font-size:
+        clamp(30px, 7vw, 50px);
+
+    margin-bottom: 20px;
+
+    animation:
+        finalGlow
+        2s
+        ease-in-out
+        infinite
+        alternate;
+}}
+
+.final-screen p {{
+    font-size: 18px;
+
+    line-height: 1.8;
+
+    opacity: 0.85;
+}}
+
+.final-heart {{
+    font-size: 55px;
+
+    margin: 15px;
+
+    animation:
+        heartBeat
+        1.5s
+        infinite;
+}}
+
+@keyframes finalReveal {{
+
+    from {{
+        opacity: 0;
+        transform: translateY(50px) scale(0.9);
+    }}
+
+    to {{
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }}
+}}
+
+@keyframes finalGlow {{
+
+    from {{
+        filter:
+            drop-shadow(
+                0 0 5px
+                rgba(255,70,190,0.3)
+            );
+    }}
+
+    to {{
+        filter:
+            drop-shadow(
+                0 0 30px
+                rgba(255,70,190,0.9)
+            );
+    }}
+}}
+
+@keyframes heartBeat {{
+
+    0%, 100% {{
+        transform: scale(1);
+    }}
+
+    50% {{
+        transform: scale(1.25);
+    }}
+}}
+
+
+/* FOOTER */
 
 .footer {{
-
     margin-top: 45px;
 
     font-size: 14px;
@@ -562,12 +577,9 @@ body {{
 }}
 
 
-/* =================================================
-   FLOATING HEARTS
-================================================= */
+/* FLOATING HEARTS */
 
 .heart {{
-
     position: fixed;
 
     bottom: -50px;
@@ -583,7 +595,6 @@ body {{
         linear
         forwards;
 }}
-
 
 @keyframes floatHeart {{
 
@@ -615,16 +626,12 @@ body {{
 
         opacity: 0;
     }}
-
 }}
 
 
-/* =================================================
-   CONFETTI
-================================================= */
+/* CONFETTI */
 
 .confetti {{
-
     position: fixed;
 
     top: -20px;
@@ -643,7 +650,6 @@ body {{
         forwards;
 }}
 
-
 @keyframes confettiFall {{
 
     0% {{
@@ -661,13 +667,10 @@ body {{
 
         opacity: 0;
     }}
-
 }}
 
 
-/* -----------------------------
-   MOBILE
------------------------------ */
+/* MOBILE */
 
 @media (max-width: 600px) {{
 
@@ -676,7 +679,6 @@ body {{
     }}
 
     .photos {{
-
         width:
             min(260px, 85vw);
 
@@ -684,21 +686,20 @@ body {{
     }}
 
     .photo {{
-
         width: 100%;
-
         height: 100%;
     }}
 
     .birthday-wish {{
-
-        padding:
-            25px 18px;
+        padding: 25px 18px;
     }}
 
     .birthday-wish p {{
-
         font-size: 16px;
+    }}
+
+    .final-screen {{
+        padding: 35px 18px;
     }}
 
 }}
@@ -716,9 +717,7 @@ body {{
 <div class="card">
 
 
-<!-- =========================
-     OPENING SCREEN
-========================= -->
+<!-- OPENING -->
 
 <div id="opening" class="opening">
 
@@ -742,9 +741,7 @@ onclick="openSurprise()"
 </div>
 
 
-<!-- =========================
-     SURPRISE SCREEN
-========================= -->
+<!-- SURPRISE -->
 
 <div id="surprise" class="hidden">
 
@@ -764,9 +761,7 @@ A little surprise, made especially for you.
 </div>
 
 
-<!-- =========================
-     PHOTOS
-========================= -->
+<!-- PHOTOS -->
 
 <div class="photos">
 
@@ -783,9 +778,7 @@ src="data:image/jpeg;base64,{photo2_base64}"
 </div>
 
 
-<!-- =========================
-     MUSIC
-========================= -->
+<!-- MUSIC -->
 
 <audio
 id="birthdaySong"
@@ -809,9 +802,7 @@ id="musicButton"
 </button>
 
 
-<!-- =========================
-     BIRTHDAY WISH
-========================= -->
+<!-- BIRTHDAY WISH -->
 
 <div class="birthday-wish">
 
@@ -835,8 +826,41 @@ Have a wonderful birthday! 🥳💖
 </div>
 
 
+<!-- FINAL ENDING -->
+
+<div class="final-screen">
+
+<div class="final-heart">
+❤️
+</div>
+
+<h2>
+That's All For You, OYE! ✨
+</h2>
+
+<p>
+Hope this little surprise
+brought a smile to your face. 😊
+</p>
+
+<p>
+Once again...
+<br>
+🎂 Happy Birthday! 🥳
+</p>
+
+<p>
+Thank you for being a beautiful part
+of these memories. ❤️
+</p>
+
+</div>
+
+
 <div class="footer">
 Made with ❤️ specially for OYE
+<br><br>
+— Jagan
 </div>
 
 
@@ -850,9 +874,7 @@ Made with ❤️ specially for OYE
 <script>
 
 
-/* =================================================
-   OPEN SURPRISE
-================================================= */
+/* OPEN SURPRISE */
 
 function openSurprise() {{
 
@@ -884,8 +906,6 @@ function openSurprise() {{
     );
 
 
-    /* START ANIMATIONS */
-
     createConfetti();
 
     startHearts();
@@ -893,9 +913,7 @@ function openSurprise() {{
 }}
 
 
-/* =================================================
-   MUSIC
-================================================= */
+/* MUSIC */
 
 function toggleMusic() {{
 
@@ -903,7 +921,6 @@ function toggleMusic() {{
         document.getElementById(
             "birthdaySong"
         );
-
 
     const button =
         document.getElementById(
@@ -932,9 +949,7 @@ function toggleMusic() {{
 }}
 
 
-/* =================================================
-   FLOATING HEARTS
-================================================= */
+/* HEARTS */
 
 function startHearts() {{
 
@@ -996,9 +1011,7 @@ function createHeart() {{
 
     setTimeout(
         function() {{
-
             heart.remove();
-
         }},
         10000
     );
@@ -1006,9 +1019,7 @@ function createHeart() {{
 }}
 
 
-/* =================================================
-   CONFETTI
-================================================= */
+/* CONFETTI */
 
 function createConfetti() {{
 
@@ -1041,6 +1052,7 @@ function createConfettiPiece() {{
 
 
     const confettiColors = [
+
         "#ff3cac",
         "#ffcc00",
         "#00e5ff",
@@ -1048,6 +1060,7 @@ function createConfettiPiece() {{
         "#ffffff",
         "#ff6b6b",
         "#b967ff"
+
     ];
 
 
@@ -1076,12 +1089,6 @@ function createConfettiPiece() {{
         (3 + Math.random() * 3) + "s";
 
 
-    piece.style.transform =
-        "rotate(" +
-        Math.random() * 360 +
-        "deg)";
-
-
     document.body.appendChild(
         piece
     );
@@ -1089,9 +1096,7 @@ function createConfettiPiece() {{
 
     setTimeout(
         function() {{
-
             piece.remove();
-
         }},
         7000
     );
@@ -1109,11 +1114,11 @@ function createConfettiPiece() {{
 
 
 # -----------------------------
-# DISPLAY APP
+# DISPLAY
 # -----------------------------
 
 components.html(
     html_code,
-    height=1800,
+    height=2000,
     scrolling=True
 )
